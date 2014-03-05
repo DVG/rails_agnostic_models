@@ -1,6 +1,6 @@
 # RailsAgnosticModels
 
-TODO: Write a gem description
+The purpose of this project is to ease the pain of upgrading Rails versions by abstracting away differences between the Rails 2.3 and 3.2 API.
 
 ## Installation
 
@@ -18,7 +18,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+class MyModel < ActiveRecord::Base
+  version_agnostic_scope :active, { where active: true }
+  version_agnostic_inheritance_column "type_inheritance"
+end
+```
 
 ## Contributing
 
