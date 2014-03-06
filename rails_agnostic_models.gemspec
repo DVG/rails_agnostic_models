@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = RailsAgnosticModels::VERSION
   spec.authors       = ["DVG"]
   spec.email         = ["devryguy@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{The purpose of this project is to ease the pain of upgrading Rails versions by abstracting away differences between the Rails 2.3 and 3.2 API.n}
+  spec.summary       = %q{Extends activerecord to provide rails-agnostic versions of common model code to east the pain of upgrading}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
+  spec.add_dependency "activerecord"
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
 end
