@@ -26,8 +26,15 @@ Or install it yourself as:
 
 ```ruby
 class MyModel < ActiveRecord::Base
-  version_agnostic_scope :active, { where active: true }    # proxys to named_scope in Rails 2, scope in Rails 3
-  version_agnostic_inheritance_column "type_inheritance"    # set_inheritance_column in RAils 2, self.inheritance_column= in Rails 3
+  # Manage flat_out incompatible code with Rails Edition Specific Blocks
+  rails_2 { acts_as_audited }
+  rails_3 { audited }
+
+  # scoping, named_scope in Rails 2, scope in Rails 3+
+  version_agnostic_scope :active, { where active: true } # relies on fake_arel in Rails 2 to provide 3+ Query Interface
+
+  # single table inheritance, set_inheritance_column in rails 2, self.inheritance_column= in Rails 3+
+  version_agnostic_inheritance_column "type_inheritance"
 end
 ```
 

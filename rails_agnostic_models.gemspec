@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = RailsAgnosticModels::VERSION
   spec.authors       = ["DVG"]
   spec.email         = ["devryguy@gmail.com"]
-  spec.description   = %q{The purpose of this project is to ease the pain of upgrading Rails versions by abstracting away differences between the Rails 2.3 and 3.2 API.n}
+  spec.description   = %q{The purpose of this project is to ease the pain of upgrading Rails versions by abstracting away differences between the Rails 2.3 and 3.2 API.}
   spec.summary       = %q{Extends activerecord to provide rails-agnostic versions of common model code to east the pain of upgrading}
   spec.homepage      = ""
   spec.license       = "MIT"
