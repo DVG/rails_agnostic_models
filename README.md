@@ -2,7 +2,7 @@
 
 The purpose of this project is to ease the pain of upgrading Rails versions by abstracting away differences between the Rails 2.3 and 3.2 API.
 
-## Wait, if I'm gonna update my code, why don't I just update to Rails 3 instead of this crap?
+### Wait, if I'm gonna update my code, why don't I just update to Rails 3 or 4 instead of this crap?
 
 If your codebase is small enough to do that in one go, please, by all means. 
 
