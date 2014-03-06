@@ -1,8 +1,5 @@
 module RailsAgnosticModels
   module RailsVersionHelpers
-    def self.included(klass)
-      klass.extend(ClassMethods)
-    end
     module ClassMethods
       def rails_2?
         (defined? Rails) && (Rails::VERSION::MAJOR == 2)
@@ -31,6 +28,9 @@ module RailsAgnosticModels
         return nil unless rails_4?
         yield
       end
+    end
+    sdef self.included(klass)
+      klass.extend(ClassMethods)
     end
   end
 end
