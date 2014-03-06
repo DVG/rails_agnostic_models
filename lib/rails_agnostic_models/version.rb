@@ -1,3 +1,3 @@
 module RailsAgnosticModels
-  VERSION = "0.0.3alpha"
+  VERSION = "0.0.3"
 end
