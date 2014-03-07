@@ -31,7 +31,8 @@ class MyModel < ActiveRecord::Base
   rails_3 { audited }
 
   # scoping, named_scope in Rails 2, scope in Rails 3+
-  version_agnostic_scope :active, { where active: true } # relies on fake_arel in Rails 2 to provide 3+ Query Interface
+  # We recommend using FakeArel in Rails 2 projects to get a universal query interface, but it is not required
+  version_agnostic_scope :active, { where active: true }
 
   # single table inheritance, set_inheritance_column in rails 2, self.inheritance_column= in Rails 3+
   version_agnostic_inheritance_column "type_inheritance"
