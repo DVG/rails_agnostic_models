@@ -47,7 +47,7 @@ module RailsAgnosticModels
       end
 
       # safely refer to constants that may not be defined. Useful in a gem that might get included in places that might not define EVERY active record model, such as
-      # a satelite administration application
+      # a satelite administration application. Note that you will still need to handle nil cases
       def safe_constant(constant_sym)
         return Object.const_get(constant_sym) if Object.const_defined? constant_sym
       end
