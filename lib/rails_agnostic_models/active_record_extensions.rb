@@ -83,6 +83,7 @@ module RailsAgnosticModels
         end
       end
 
+      # passes an options hash to rails 2, translates to an arel call in Rails 3
       def version_agnostic_default_scope(options = {})
         if rails_2?
           default_scope options
