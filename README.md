@@ -36,6 +36,11 @@ class MyModel < ActiveRecord::Base
 
   # single table inheritance, set_inheritance_column in rails 2, self.inheritance_column= in Rails 3+
   version_agnostic_inheritance_column "type_inheritance"
+
+  # sends the options hash onto default_scope in Rails 2
+  # translates to an arel method chain in Rails 3+
+  # Currenlty only :order and :conditions are supported
+  version_agnostic_default_scope(:order => "created_at DESC", :conditions => {:active => true})
 end
 ```
 
