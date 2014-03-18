@@ -44,7 +44,7 @@ module RailsAgnosticModels
         if rails_2?
           default_scope options
         else
-          self.instance_eval "default_scope #{options_to_arel(options)}"
+          self.instance_eval "default_scope #{ArelTranslator::Translator.new(options).translate!}"
         end
       end
 
@@ -68,55 +68,6 @@ module RailsAgnosticModels
 
       def top_level_constant_lookup(constant)
         Object.const_get(constant) if Object.const_defined? constant
-      end
-
-      def options_to_arel(options)
-        first_key = options.keys.first
-        option = OpenStruct.new
-        option.key = first_key
-        option.value = options[first_key]
-        code = "#{translate_arel(option)}"
-        options.keys.drop(1).each do |opt|
-          option.key = opt
-          option.value = options[opt]
-          code += ".#{translate_arel(option)}"
-        end
-        code
-      end
-
-      def translate_arel(option)
-        case option.key
-        when :order then "order('#{option.value}')"
-        when :conditions then "where(#{translate_where(option.value)})"
-        else ""
-        end
-      end
-
-      def translate_where(conditions)
-        case conditions
-        when Hash then return hash_without_braches(conditions)
-        when String then return "\"#{conditions}\""
-        when Array then return array_without_brackets(conditions)
-        end
-      end
-
-      def hash_without_braches(hash)
-        return hash.keys.inject([]) do |a, key|
-          a << "#{key}: #{hash[key]}"
-        end.join(', ')
-      end
-
-      def array_without_brackets(array)
-        return array.inject([]) do |a, value|
-          a << array_value(value)
-        end.join(", ")
-      end
-
-      def array_value(value)
-        case value
-        when String then return "\"#{value}\""
-        else return value
-        end
       end
     end
     def self.included(klass)

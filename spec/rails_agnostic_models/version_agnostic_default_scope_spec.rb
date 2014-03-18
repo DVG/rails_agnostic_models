@@ -16,9 +16,9 @@ describe "#version_agnostic_default_scope" do
   end
   context "Rails 3" do
     before { stub_const("Rails::VERSION::MAJOR", 3) }
-    describe "order" do
+    describe "order", focus: true do
       let(:hash) { {order: "my_column desc"} }
-      let(:arel) { "default_scope order('#{hash[:order]}')" }
+      let(:arel) { "default_scope order(\"#{hash[:order]}\")" }
       it "converts options hash to arel calls" do
         Rails3Class.should_receive(:instance_eval).with(arel)
         Rails3Class.send(:version_agnostic_default_scope, hash)
