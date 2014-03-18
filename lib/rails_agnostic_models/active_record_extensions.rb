@@ -1,8 +1,6 @@
-require_relative './rails_helpers'
 module RailsAgnosticModels
   module ActiveRecordExtensions
     module ClassMethods
-      require 'ostruct'
       # safely refer to constants that may not be defined. Useful in a gem that might get included in places that might not define EVERY active record model, such as
       # a satelite administration application. Note that you will still need to handle nil cases
       #
