@@ -13,7 +13,7 @@ module RailsAgnosticModels
         when Hash then return wrap_where hash_without_braches(self.conditions)
         when String then return wrap_where "\"#{self.conditions}\""
         when Array then return wrap_where array_without_brackets(self.conditions)
-        else raise UnkownArgumentException
+        else raise UnsupportedArgumentException
         end
       end
 
