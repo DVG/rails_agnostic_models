@@ -1,0 +1,2 @@
+class UnsupportedArgumentException < StandardError
+end

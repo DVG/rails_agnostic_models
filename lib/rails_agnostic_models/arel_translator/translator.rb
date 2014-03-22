@@ -39,9 +39,9 @@ module RailsAgnosticModels
         case option.key
         when :order then Order.new(option.value)
         when :conditions then Where.new(option.value)
-        else ""
+        else raise UnknownArgumentException
         end.translate!
       end
     end
   end
-end 
+end
